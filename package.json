@@ -1,6 +1,6 @@
 {
   "name": "ipfs-upload-action",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Upload a static website to crustwebsites.net public IPFS gateway",
   "main": "index.js",
   "scripts": {

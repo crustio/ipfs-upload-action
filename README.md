@@ -1,2 +1,40 @@
-# ipfs-publish-action
-Publish a static website to crustwebsites.net public gateway
+# Crust IPFS Upload action
+
+This action upload your website to IPFS through [IPFS Public Gateway](https://ipfs.github.io/public-gateway-checker/)- **crustwebsites.net**
+
+## Inputs
+
+### `path`
+
+**Required** Path to directory sent to IPFS
+
+### `crust-secret-key`
+
+> Since we need to make sure the stability of this IPFS Public Gateway, please contact Crust Team(CrustNetwork@gmail.com) to get the secret key.
+
+*Optional*, *crustwebsites.net* gateway secret key.
+
+## Outputs
+
+### `hash`
+
+**string**, Uploaded IPFS cid(CIDv0) hash value.
+
+## Example usage
+
+```yaml
+uses: crustio/ipfs-upload-action@1.0.2
+with:
+  path: './build'
+  seeds: ${{ secrets.CRUST_SECRET_KEY }}
+```
+
+## Contribution
+
+Feel free to dive in! [Open an issue](https://github.com/crustio/ipfs-upload-action/issues/new) or send a PR.
+
+To contribute to Crust in general, see the [Contribution Guide](https://github.com/crustio/crust/blob/master/docs/CONTRIBUTION.md)
+
+## License
+
+[MIT](https://github.com/crustio/ipfs-crust-action/blob/main/LICENSE) @Crust Network
