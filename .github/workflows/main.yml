@@ -1,0 +1,19 @@
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: Testing on Crust IPFS uploader
+    steps:
+      - uses: actions/checkout@v2.1.0
+      - name: Crust IPFS uploader action
+        id: pin
+        uses: crustio/ipfs-upload-action@v1.0.0
+        with:
+          path: ./test
+          seeds: ${{ secrets.CRUST_SECRET_KEY }}
+      - name: Got it
+        run: echo "Access with 'https://crustwebsites.net/ipfs/${{ steps.pin.outputs.hash }}'"

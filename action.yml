@@ -1,0 +1,21 @@
+name: 'Crust IPFS Upload'
+description: 'Upload your site to crustwebsites.net/ gateway'
+author: 'crust'
+branding:
+  icon: 'upload'
+  color: 'gray-dark'
+
+inputs:
+  path:
+    description: 'Path to directory which should be sent to gateway'
+    required: true
+  crust-secret-key:
+    description: 'Crustwebsites gateway secret key'
+    required: true
+outputs:
+  hash:
+    description: 'Uploaded IPFS cid(CIDv0) hash value'
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
