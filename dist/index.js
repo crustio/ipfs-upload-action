@@ -6,6 +6,7 @@ module.exports =
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(2186);
+const fsPath = __nccwpck_require__(5622);
 const fs = __nccwpck_require__(5747);
 const IpfsHttpClient = __nccwpck_require__(6024);
 const { globSource } = IpfsHttpClient;
@@ -14,12 +15,16 @@ const ipfsGateway = 'https://crustwebsites.net/api/v0';
 
 async function main() {
     // 1. Get all inputs
-    const path = core.getInput('path');
+    let path = core.getInput('path');
     const crustSecretKey = core.getInput('crust-secret-key');
 
-    // 2. Check legality of path
+    // 2. Check path and convert path
+    const workspace = process.env.GITHUB_WORKSPACE.toString();
+    if (!fsPath.isAbsolute(path)) {
+        path = fsPath.join(workspace, path);
+    }
     if (!fs.existsSync(path)) {
-        throw new Error(`File/directory is not exists: ${path}`);
+        throw new Error(`File/directory not exist: ${path}`);
     }
 
     // 3. Create ipfs http client
