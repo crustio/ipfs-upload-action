@@ -13,7 +13,7 @@ jobs:
         id: pin
         uses: crustio/ipfs-upload-action@v1.0.2
         with:
-          path: './github/workflows/build'
+          path: './.github/workflows/build'
           crust-secret-key: ${{ secrets.CRUST_SECRET_KEY }}
       - name: Got it
         run: echo "Access with 'https://crustwebsites.net/ipfs/${{ steps.pin.outputs.hash }}'"
