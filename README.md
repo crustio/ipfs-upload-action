@@ -10,7 +10,10 @@ This action upload your website to IPFS through [IPFS Public Gateway](https://ip
 
 ### `crust-secret-key`
 
-> Since we need to make sure the stability of this IPFS Public Gateway, please contact Crust Team(CrustNetwork@gmail.com) to get the secret key.
+> Since we need to make sure the stability of this IPFS Public Gateway, we required a secret key to access this WRITABLE API, you can get secret key by:
+>
+> 1. Emailing <hi@crust.network>
+> 2. Join Crust [Discord Channel](https://discord.gg/D97GGQndmx)
 
 *Optional*, *crustwebsites.net* gateway secret key.
 
