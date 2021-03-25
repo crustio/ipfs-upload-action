@@ -1,6 +1,6 @@
 # Crust IPFS Upload action
 
-This action upload your website to IPFS through [IPFS Public Gateway](https://ipfs.github.io/public-gateway-checker/)- **crustwebsites.net**
+Upload your website or content to [Crust's public IPFS gateway](https://crustwebsites.net/ipfs/bafybeifx7yeb55armcsxwwitkymga5xf53dxiarykms3ygqic223w5sk3m#x-ipfs-companion-no-redirect) and pin.
 
 ## Inputs
 
