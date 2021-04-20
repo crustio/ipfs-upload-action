@@ -29,7 +29,7 @@ Upload your website or content to [Crust's public IPFS gateway](https://crustweb
 uses: crustio/ipfs-upload-action@1.0.2
 with:
   path: './build'
-  seeds: ${{ secrets.CRUST_SECRET_KEY }}
+  crust-secret-key: ${{ secrets.CRUST_SECRET_KEY }}
 ```
 
 ## Contribution
