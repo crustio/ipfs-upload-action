@@ -11,9 +11,9 @@ jobs:
       - uses: actions/checkout@v2.1.0
       - name: Crust IPFS uploader action
         id: pin
-        uses: crustio/ipfs-upload-action@v1.0.2
+        uses: crustio/ipfs-upload-action@v2.0.0
         with:
           path: './.github/workflows/build'
-          crust-secret-key: ${{ secrets.CRUST_SECRET_KEY }}
+          seeds: ${{ secrets.CRUST_SEEDS }}
       - name: Got it
         run: echo "Access with 'https://crustwebsites.net/ipfs/${{ steps.pin.outputs.hash }}'"
