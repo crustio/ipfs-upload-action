@@ -1,6 +1,7 @@
 # Crust IPFS Upload action
 
-Upload your website or content to [Crust's public IPFS gateway](https://crustwebsites.net/ipfs/bafybeifx7yeb55armcsxwwitkymga5xf53dxiarykms3ygqic223w5sk3m#x-ipfs-companion-no-redirect) and pin.
+This action upload your website to IPFS through [IPFS W3Auth Gateway](https://wiki.crust.network/docs/en/buildIPFSWeb3AuthGW)
+
 
 ## Inputs
 
@@ -8,14 +9,18 @@ Upload your website or content to [Crust's public IPFS gateway](https://crustweb
 
 **Required** Path to directory sent to IPFS
 
-### `crust-secret-key`
+### `seeds`
 
-> Since we need to make sure the stability of this IPFS Public Gateway, we required a secret key to access this WRITABLE API, you can get secret key by:
->
-> 1. Emailing <hi@crust.network>
-> 2. Join Crust [Discord Channel](https://discord.gg/D97GGQndmx)
+**Required** Substrate-based chain secret seeds, which support:
 
-*Optional*, *crustwebsites.net* gateway secret key.
+- [Crust](https://apps.crust.network/#/accounts): Please go to Crust Apps to get seeds
+- [Polkadot](https://polkadot.js.org/apps/#/accounts): Please go to Polkadot Apps to get seeds
+- [Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-rpc.polkadot.io#/accounts): Please go to Kusama Apps to get seeds
+- More substrate based chains
+
+### `gateway`
+
+*Optional*, IPFS Public Gateway which support W3Auth, default is `https://crustwebsites.net`
 
 ## Outputs
 
@@ -26,10 +31,10 @@ Upload your website or content to [Crust's public IPFS gateway](https://crustweb
 ## Example usage
 
 ```yaml
-uses: crustio/ipfs-upload-action@1.0.2
+uses: crustio/ipfs-upload-action@2.0.0
 with:
   path: './build'
-  crust-secret-key: ${{ secrets.CRUST_SECRET_KEY }}
+  seeds: ${{ secrets.SUBSTRATE_SEEDS }}
 ```
 
 ## Contribution

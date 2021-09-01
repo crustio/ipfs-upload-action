@@ -1,7 +1,7 @@
 {
   "name": "ipfs-upload-action",
-  "version": "1.0.2",
-  "description": "Upload a static website to crustwebsites.net public IPFS gateway",
+  "version": "2.0.0",
+  "description": "Upload a static website to IPFS W3Auth gateway",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,8 @@
   "keywords": [
     "crust",
     "ipfs",
-    "github action"
+    "github action",
+    "w3auth"
   ],
   "author": "Zikun Fan(kun@crust.network)",
   "license": "MIT",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/crustio/ipfs-publish-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
+    "@polkadot/keyring": "^7.3.1",
     "@vercel/ncc": "^0.27.0",
     "ipfs-http-client": "^49.0.2"
   }
