@@ -15,5 +15,5 @@ jobs:
         with:
           path: './.github/workflows/build'
           seeds: ${{ secrets.CRUST_SEEDS }}
-      - name: Got it
-        run: echo "Access with 'https://crustwebsites.net/ipfs/${{ steps.pin.outputs.hash }}'"
+      - name: Upload success
+        run: echo "Now, you can access with 'https://crustwebsites.net/ipfs/${{ steps.pin.outputs.hash }}'"
