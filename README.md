@@ -2,6 +2,7 @@
 
 This action upload your website to IPFS through [IPFS W3Auth Gateway](https://wiki.crust.network/docs/en/buildIPFSWeb3AuthGW)
 
+
 ## Inputs
 
 ### `path`
