@@ -1,5 +1,5 @@
 name: 'Crust IPFS Upload'
-description: 'Upload your site to crustwebsites.net/ gateway'
+description: 'Upload your site to IPFS W3Auth Gateway'
 author: 'crust'
 branding:
   icon: 'upload'
@@ -9,9 +9,11 @@ inputs:
   path:
     description: 'Path to directory which should be sent to gateway'
     required: true
-  crust-secret-key:
-    description: 'Crustwebsites gateway secret key'
+  seeds:
+    description: 'Substrate-based chain secret seeds'
     required: true
+  gateway:
+    description: 'IPFS gateway which support web3 authentication'
 outputs:
   hash:
     description: 'Uploaded IPFS cid(CIDv0) hash value'
