@@ -31,7 +31,7 @@ This action upload your website to IPFS through [IPFS W3Auth Gateway](https://wi
 ## Example usage
 
 ```yaml
-uses: crustio/ipfs-upload-action@2.0.0
+uses: crustio/ipfs-upload-action@2.0.1
 with:
   path: './build'
   seeds: ${{ secrets.SUBSTRATE_SEEDS }}
