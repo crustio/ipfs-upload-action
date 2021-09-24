@@ -20,7 +20,7 @@ This action upload your website to IPFS through [IPFS W3Auth Gateway](https://wi
 
 ### `gateway`
 
-*Optional*, IPFS Public Gateway which support W3Auth, default is `https://crustwebsites.net`
+*Optional*, IPFS Public Gateway which support W3Auth, default is `https://crustipfs.xyz`
 
 ## Outputs
 

@@ -9,7 +9,7 @@ async function main() {
     // 1. Get all inputs
     let path = core.getInput('path');
     const seeds = core.getInput('seeds');
-    const ipfsGateway = core.getInput('gateway') || 'https://crustwebsites.net';
+    const ipfsGateway = core.getInput('gateway') || 'https://crustipfs.xyz';
 
     // 2. Check path and convert path
     const workspace = process.env.GITHUB_WORKSPACE.toString();
