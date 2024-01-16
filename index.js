@@ -1,9 +1,33 @@
 const core = require('@actions/core');
+
+const _ = require('lodash');
+const { v4: uuidv4 } = require('uuid');
 const fsPath = require('path');
 const fs = require('fs');
-const IpfsHttpClient = require('ipfs-http-client');
-const { globSource } = IpfsHttpClient;
+const axios = require('axios');
+const MFormData = require('form-data');
+
 const { Keyring } = require('@polkadot/keyring');
+
+const ipfsPath = uuidv4();
+function getAllFiles(rootPath, dirPath, ipfsPath) {
+    const files = fs.readdirSync(dirPath);
+    let arrayOfFiles = [];
+    files.forEach((file) => {
+        if (fs.statSync(dirPath + "/" + file).isDirectory()) {
+            arrayOfFiles = _.concat(arrayOfFiles, getAllFiles(rootPath, dirPath + "/" + file, ipfsPath));
+        }
+        else {
+            const absPath = fsPath.join(dirPath, "/", file);
+            const realPath = _.replace(absPath, rootPath, ipfsPath);
+            arrayOfFiles.push({
+                absPath: absPath,
+                path: realPath,
+            })
+        }
+    })
+    return arrayOfFiles;
+}
 
 async function main() {
     // 1. Get all inputs
@@ -28,21 +52,35 @@ async function main() {
 
     const authHeader = Buffer.from(`${pair.address}:${sigHex}`).toString('base64');
 
-    // 4. Create ipfs http client
-    const ipfs = IpfsHttpClient({
-        url: ipfsGateway + '/api/v0',
+    // 4. Construct request form data
+    const form = new MFormData();
+    core.info(`Query all files`);
+    const files = getAllFiles(path, path, ipfsPath);
+    for (const f of files) {
+        const fileStream = fs.createReadStream(f.absPath);
+        form.append('file', fileStream, { filepath: f.path });
+        core.info(`Add file ${f.path}`);
+    }
+
+    // 5. Uploading files
+    core.info(`Start uploading`);
+    const result = await axios.request({
         headers: {
+            ...form.getHeaders(),
             authorization: 'Basic ' + authHeader
-        }
+        },
+        data: form,
+        method: 'POST',
+        url: ipfsGateway + '/api/v0/add',
+        timeout: 3600000,
+        maxBodyLength: 10737418240
     });
 
-    const { cid } = await ipfs.add(globSource(path, { recursive: true }));
-
-    if (cid) {
-        core.setOutput('hash', cid.toV0().toString());
-    } else {
-        throw new Error('IPFS add failed, please try again.');
-    }
+    // 6. Parse output
+    const resultArr = result.data.split('\n');
+    const folder = JSON.parse(resultArr[resultArr.length - 2]);
+    core.info(`CID: ${folder.Hash}, Size: ${folder.Size}`);
+    core.setOutput('hash', folder.Hash);
 }
 
 main().catch(error => {
