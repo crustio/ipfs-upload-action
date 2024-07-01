@@ -1,6 +1,6 @@
 {
   "name": "ipfs-upload-action",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Upload a static website to IPFS W3Auth gateway",
   "main": "index.js",
   "scripts": {

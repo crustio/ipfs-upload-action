@@ -34,7 +34,7 @@ async function main() {
     let path = core.getInput('path');
     const seeds = core.getInput('seeds');
     const ipfsGateway = core.getInput('gateway') || 'https://crustipfs.xyz';
-
+    const params = core.getInput('params')
     // 2. Check path and convert path
     const workspace = process.env.GITHUB_WORKSPACE.toString();
     if (!fsPath.isAbsolute(path)) {
@@ -71,7 +71,7 @@ async function main() {
         },
         data: form,
         method: 'POST',
-        url: ipfsGateway + '/api/v0/add',
+        url: ipfsGateway + '/api/v0/add' + (params ? `?${params}`: ''),
         timeout: 3600000,
         maxBodyLength: 10737418240
     });

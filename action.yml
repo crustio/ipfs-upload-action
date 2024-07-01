@@ -14,6 +14,8 @@ inputs:
     required: true
   gateway:
     description: 'IPFS gateway which support web3 authentication'
+  params: 
+    description: 'IPFS /api/v0/add params'  
 outputs:
   hash:
     description: 'Uploaded IPFS cid(CIDv0) hash value'

@@ -22,11 +22,21 @@ This action upload your website to IPFS through [IPFS W3Auth Gateway](https://wi
 
 *Optional*, IPFS Public Gateway which support W3Auth, default is `https://crustipfs.xyz`
 
+### `params`
+
+*Optional*, IPFS [/api/v0/add](https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-add) Arguments
+
+example:
+
+```yaml
+params: pin=true&cid-version=1
+```
+
 ## Outputs
 
 ### `hash`
 
-**string**, Uploaded IPFS cid(CIDv0) hash value.
+**string**, Uploaded IPFS cid hash value.
 
 ## Example usage
 
